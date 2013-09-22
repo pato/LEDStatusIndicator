@@ -1,0 +1,105 @@
+# EESchema Netlist Version 1.1 created  Sun 15 Sep 2013 01:45:31 AM CDT
+(
+ ( /5235481A C1V7 C1 CP1
+  ( 1 N-000013 )
+  ( 2 GND )
+ )
+ ( /52353E73 DIP-8__300 IC1 ATTINY25-P
+  ( 1 N-000011 )
+  ( 2 N-000006 )
+  ( 3 N-000007 )
+  ( 4 GND )
+  ( 5 N-000001 )
+  ( 6 N-000005 )
+  ( 7 N-000012 )
+  ( 8 N-000013 )
+ )
+ ( /523548F8 USB_B J1 USB_1
+  ( 1 N-000013 )
+  ( 2 ? )
+  ( 3 ? )
+  ( 4 GND )
+  ( 5 GND )
+  ( 6 GND )
+ )
+ ( /523549D7 8DIPCMS P1 CONN_1
+  ( 1 N-000011 )
+ )
+ ( /52354084 SELF-WE-PD3S P2 CONN_1
+  ( 1 N-000010 )
+ )
+ ( /523549CD SIL-1 P3 CONN_1
+  ( 1 N-000012 )
+ )
+ ( /52354092 SIL-1 P4 CONN_1
+  ( 1 N-000009 )
+ )
+ ( /523549C5 SIL-1 P5 CONN_1
+  ( 1 N-000005 )
+ )
+ ( /523549AF SIL-1 P6 CONN_1
+  ( 1 N-000001 )
+ )
+ ( /52354097 SIL-1 P7 CONN_1
+  ( 1 N-000008 )
+ )
+ ( /523540A0 SIL-1 P8 CONN_1
+  ( 1 GND )
+ )
+ ( /52353F92 R3 R1 R
+  ( 1 N-000012 )
+  ( 2 N-000010 )
+ )
+ ( /52353F8A R3 R2 R
+  ( 1 N-000006 )
+  ( 2 N-000009 )
+ )
+ ( /52353F73 R3 R3 R
+  ( 1 N-000008 )
+  ( 2 N-000007 )
+ )
+ ( /52353F29 R3 R4 R
+  ( 1 N-000013 )
+  ( 2 N-000011 )
+ )
+ ( /5235486F SW_PUSH_SMALL SW1 SW_PUSH
+  ( 1 N-000001 )
+  ( 2 GND )
+ )
+)
+*
+{ Allowed footprints by component:
+$component C1
+ CP*
+ SM*
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R3
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+ R?-*
+ SM1206
+$endlist
+$endfootprintlist
+}

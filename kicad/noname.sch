@@ -1,0 +1,314 @@
+EESchema Schematic File Version 2  date Sun 15 Sep 2013 12:52:06 AM CDT
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:special
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:powercapdoorindicator
+LIBS:noname-cache
+EELAYER 25  0
+EELAYER END
+$Descr A4 11700 8267
+encoding utf-8
+Sheet 1 1
+Title ""
+Date "15 sep 2013"
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Wire Wire Line
+	5850 1850 5850 2000
+Connection ~ 1200 2050
+Wire Wire Line
+	700  1450 700  2050
+Wire Wire Line
+	700  2050 1200 2050
+Wire Wire Line
+	950  1450 950  1550
+Wire Wire Line
+	950  1550 1200 1550
+Connection ~ 4250 1600
+Wire Wire Line
+	5100 1600 4250 1600
+Wire Wire Line
+	1200 1050 1200 1450
+Wire Wire Line
+	1200 1050 1400 1050
+Wire Wire Line
+	1200 2750 1350 2750
+Connection ~ 3950 1950
+Wire Wire Line
+	900  2600 900  2750
+Wire Wire Line
+	1200 1650 750  1650
+Wire Wire Line
+	750  1650 750  2100
+Wire Wire Line
+	1200 1850 1050 1850
+Wire Wire Line
+	1050 1850 1050 2100
+Wire Wire Line
+	1200 2100 1200 1950
+Wire Wire Line
+	3900 1950 4050 1950
+Wire Wire Line
+	4050 1950 4050 2000
+Wire Wire Line
+	3900 1450 4250 1450
+Wire Wire Line
+	4250 1450 4250 2600
+Wire Wire Line
+	4250 2600 1200 2600
+Wire Wire Line
+	900  2100 900  1750
+Wire Wire Line
+	900  1750 1200 1750
+Wire Wire Line
+	750  2600 750  2750
+Wire Wire Line
+	1050 2600 1050 2750
+Wire Wire Line
+	3950 1500 3950 1450
+Connection ~ 3950 1450
+Wire Wire Line
+	3950 1950 3950 1900
+Wire Wire Line
+	2000 1050 2200 1050
+Wire Wire Line
+	5100 1750 5000 1750
+Wire Wire Line
+	1200 1450 1050 1450
+Wire Wire Line
+	850  1650 850  1450
+Connection ~ 850  1650
+Wire Wire Line
+	5100 1850 5100 2000
+$Comp
+L GND #PWR01
+U 1 1 52354AA1
+P 5850 2000
+F 0 "#PWR01" H 5850 2000 30  0001 C CNN
+F 1 "GND" H 5850 1930 30  0001 C CNN
+	1    5850 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR02
+U 1 1 52354A97
+P 5100 2000
+F 0 "#PWR02" H 5100 2000 30  0001 C CNN
+F 1 "GND" H 5100 1930 30  0001 C CNN
+	1    5100 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_1 P1
+U 1 1 523549D7
+P 700 1300
+F 0 "P1" H 780 1300 40  0000 L CNN
+F 1 "CONN_1" H 700 1355 30  0001 C CNN
+	1    700  1300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CONN_1 P3
+U 1 1 523549CD
+P 850 1300
+F 0 "P3" H 930 1300 40  0000 L CNN
+F 1 "CONN_1" H 850 1355 30  0001 C CNN
+	1    850  1300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CONN_1 P5
+U 1 1 523549C5
+P 950 1300
+F 0 "P5" H 1030 1300 40  0000 L CNN
+F 1 "CONN_1" H 950 1355 30  0001 C CNN
+	1    950  1300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CONN_1 P6
+U 1 1 523549AF
+P 1050 1300
+F 0 "P6" H 1130 1300 40  0000 L CNN
+F 1 "CONN_1" H 1050 1355 30  0001 C CNN
+	1    1050 1300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR03
+U 1 1 5235490B
+P 5000 1750
+F 0 "#PWR03" H 5000 1750 30  0001 C CNN
+F 1 "GND" H 5000 1680 30  0001 C CNN
+	1    5000 1750
+	0    1    1    0   
+$EndComp
+$Comp
+L USB_1 J1
+U 1 1 523548F8
+P 5500 1400
+F 0 "J1" H 5350 1800 60  0000 C CNN
+F 1 "USB_1" H 5475 800 60  0001 C CNN
+	1    5500 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR04
+U 1 1 523548A8
+P 1350 2750
+F 0 "#PWR04" H 1350 2750 30  0001 C CNN
+F 1 "GND" H 1350 2680 30  0001 C CNN
+	1    1350 2750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR05
+U 1 1 52354887
+P 2200 1050
+F 0 "#PWR05" H 2200 1050 30  0001 C CNN
+F 1 "GND" H 2200 980 30  0001 C CNN
+	1    2200 1050
+	0    -1   -1   0   
+$EndComp
+$Comp
+L SW_PUSH SW1
+U 1 1 5235486F
+P 1700 1050
+F 0 "SW1" H 1850 1160 50  0000 C CNN
+F 1 "SW_PUSH" H 1700 970 50  0000 C CNN
+	1    1700 1050
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP1 C1
+U 1 1 5235481A
+P 3950 1700
+F 0 "C1" H 4000 1800 50  0000 L CNN
+F 1 "CP1" H 4000 1600 50  0000 L CNN
+	1    3950 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_1 P8
+U 1 1 523540A0
+P 1200 2900
+F 0 "P8" H 1280 2900 40  0000 L CNN
+F 1 "CONN_1" H 1200 2955 30  0001 C CNN
+	1    1200 2900
+	0    1    1    0   
+$EndComp
+$Comp
+L CONN_1 P7
+U 1 1 52354097
+P 1050 2900
+F 0 "P7" H 1130 2900 40  0000 L CNN
+F 1 "CONN_1" H 1050 2955 30  0001 C CNN
+	1    1050 2900
+	0    1    1    0   
+$EndComp
+$Comp
+L CONN_1 P4
+U 1 1 52354092
+P 900 2900
+F 0 "P4" H 980 2900 40  0000 L CNN
+F 1 "CONN_1" H 900 2955 30  0001 C CNN
+	1    900  2900
+	0    1    1    0   
+$EndComp
+$Comp
+L CONN_1 P2
+U 1 1 52354084
+P 750 2900
+F 0 "P2" H 830 2900 40  0000 L CNN
+F 1 "CONN_1" H 750 2955 30  0001 C CNN
+	1    750  2900
+	0    1    1    0   
+$EndComp
+$Comp
+L R R1
+U 1 1 52353F92
+P 750 2350
+F 0 "R1" V 830 2350 50  0000 C CNN
+F 1 "R" V 750 2350 50  0000 C CNN
+	1    750  2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R2
+U 1 1 52353F8A
+P 900 2350
+F 0 "R2" V 980 2350 50  0000 C CNN
+F 1 "R" V 900 2350 50  0000 C CNN
+	1    900  2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R3
+U 1 1 52353F73
+P 1050 2350
+F 0 "R3" V 1130 2350 50  0000 C CNN
+F 1 "R" V 1050 2350 50  0000 C CNN
+	1    1050 2350
+	-1   0    0    1   
+$EndComp
+$Comp
+L R R4
+U 1 1 52353F29
+P 1200 2350
+F 0 "R4" V 1280 2350 50  0000 C CNN
+F 1 "R" V 1200 2350 50  0000 C CNN
+	1    1200 2350
+	-1   0    0    1   
+$EndComp
+$Comp
+L GND #PWR06
+U 1 1 52353EB7
+P 4050 2000
+F 0 "#PWR06" H 4050 2000 30  0001 C CNN
+F 1 "GND" H 4050 1930 30  0001 C CNN
+	1    4050 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L ATTINY25-P IC1
+U 1 1 52353E73
+P 1400 1350
+F 0 "IC1" H 1500 1400 60  0000 C CNN
+F 1 "ATTINY25-P" H 3400 600 60  0000 C CNN
+F 2 "DIP8" H 1500 600 60  0001 C CNN
+	1    1400 1350
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC

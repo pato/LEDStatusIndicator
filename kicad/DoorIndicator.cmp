@@ -1,0 +1,115 @@
+Cmp-Mod V01 Created by CvPcb (2012-apr-16-27)-stable date = Sun 15 Sep 2013 01:45:31 AM CDT
+
+BeginCmp
+TimeStamp = /5235481A;
+Reference = C1;
+ValeurCmp = CP1;
+IdModule  = C1V7;
+EndCmp
+
+BeginCmp
+TimeStamp = /52353E73;
+Reference = IC1;
+ValeurCmp = ATTINY25-P;
+IdModule  = DIP-8__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /523548F8;
+Reference = J1;
+ValeurCmp = USB_1;
+IdModule  = USB_B;
+EndCmp
+
+BeginCmp
+TimeStamp = /523549D7;
+Reference = P1;
+ValeurCmp = CONN_1;
+IdModule  = 8DIPCMS;
+EndCmp
+
+BeginCmp
+TimeStamp = /52354084;
+Reference = P2;
+ValeurCmp = CONN_1;
+IdModule  = SELF-WE-PD3S;
+EndCmp
+
+BeginCmp
+TimeStamp = /523549CD;
+Reference = P3;
+ValeurCmp = CONN_1;
+IdModule  = SIL-1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52354092;
+Reference = P4;
+ValeurCmp = CONN_1;
+IdModule  = SIL-1;
+EndCmp
+
+BeginCmp
+TimeStamp = /523549C5;
+Reference = P5;
+ValeurCmp = CONN_1;
+IdModule  = SIL-1;
+EndCmp
+
+BeginCmp
+TimeStamp = /523549AF;
+Reference = P6;
+ValeurCmp = CONN_1;
+IdModule  = SIL-1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52354097;
+Reference = P7;
+ValeurCmp = CONN_1;
+IdModule  = SIL-1;
+EndCmp
+
+BeginCmp
+TimeStamp = /523540A0;
+Reference = P8;
+ValeurCmp = CONN_1;
+IdModule  = SIL-1;
+EndCmp
+
+BeginCmp
+TimeStamp = /52353F92;
+Reference = R1;
+ValeurCmp = R;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /52353F8A;
+Reference = R2;
+ValeurCmp = R;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /52353F73;
+Reference = R3;
+ValeurCmp = R;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /52353F29;
+Reference = R4;
+ValeurCmp = R;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /5235486F;
+Reference = SW1;
+ValeurCmp = SW_PUSH;
+IdModule  = SW_PUSH_SMALL;
+EndCmp
+
+EndListe
