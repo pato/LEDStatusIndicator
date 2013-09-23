@@ -5,7 +5,7 @@ Handy device that you can use to inform people outside your dorm on whether you 
 
 First Protype
 -------------
-![first prototype](/pictures/protype1.jpg)
+![first prototype](/pictures/prototype1.jpg)
 
 Second Protype
 --------------
