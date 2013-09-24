@@ -3,19 +3,16 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#define SETBIT(ADDRESS,BIT) (ADDRESS |= (1<<BIT)) 
-#define CLEARBIT(ADDRESS,BIT) (ADDRESS &= ~(1<<BIT)) 
-#define FLIPBIT(ADDRESS,BIT) (ADDRESS ^= (1<<BIT)) 
-#define CHECKBIT(ADDRESS,BIT) (ADDRESS & (1<<BIT)) 
-
 
 int main(void){
 	DDRD  = 0b11110111;
 	DDRC  = 0b00000000;
 	PINC  = 0b11111111;
 
-	int i = 0;
+	//				Green		Blue		Purple		Red		
 	int colors[] = {0b00000010, 0b00000001, 0b00000101, 0b00000100};
+	int i = 0;
+
 	PORTD = colors[0];
 	while(1){
 		if (!(PINC & 0x04)){
