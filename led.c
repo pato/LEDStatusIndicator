@@ -1,7 +1,5 @@
 #define F_CPU 1000000UL
 
-
-
 #include <avr/io.h>
 #include <util/delay.h>
 
@@ -16,14 +14,6 @@ int main(void){
 	DDRC  = 0b00000000;
 	PINC  = 0b11111111;
 
-	while(0){
-		_delay_ms(500);
-		SETBIT(PORTD,2);
-		_delay_ms(500);
-		SETBIT(PORTD,3);
-		_delay_ms(500);
-	}
-
 	int i = 0;
 	int colors[] = {0b00000010, 0b00000001, 0b00000101, 0b00000100};
 	PORTD = colors[0];
@@ -37,29 +27,5 @@ int main(void){
 				i=0;
 		}
 	}
-
-	while (0){
-		//blue
-		PORTD = 0b00000001;
-
-		_delay_ms(500);
-		//green
-		PORTD = 0b00000010;
-
-		_delay_ms(500);
-		//red
-		PORTD = 0b00000100;
-
-		_delay_ms(500);
-
-		PORTD = 0b00000101;
-		
-		_delay_ms(500);
-
-	}
-
-
-
     return(0);
-
 }
