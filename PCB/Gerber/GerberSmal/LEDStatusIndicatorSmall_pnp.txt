@@ -4,7 +4,7 @@
 *eMail=
 *
 *Project=LEDStatusIndicatorSmall
-*Date=17:29:41
+*Date=17:35:29
 *CreatedBy=Fritzing 0.8.3b.07.27.048f
 *
 *
@@ -20,7 +20,7 @@
 5;;;17.2824;-1.07858;0;Bottom;TXT2
 6;510;THT;6.46673;-6.35872;-180;Bottom;R2
 7;100µF;100 mil [THT, electrolytic];3.92673;-22.8687;-90;Bottom;C1
-8;;[SMD];17.4167;-19.8887;-90;Top;S1
+8;;[SMD];17.4167;-18.6187;-90;Top;S1
 9;220;THT;6.46673;-1.27872;180;Bottom;R2
 10;10k;THT;6.46673;-8.89872;180;Bottom;R1
 11;;5 mm [THT];18.6312;-8.89872;0;Bottom;LED
