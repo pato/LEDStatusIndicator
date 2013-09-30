@@ -5,18 +5,22 @@ extern "C"{
 #include <inttypes.h>
 }
 
-    
-void pwm(uint8_t mask, uint8_t val){
-	for (uint8_t i = 0; i < val; ++i)
-	{
-		PORTB |= mask;
-	}
-	for(uint8_t i = val; i <= 255; i++){
-		PORTB &= ~mask;
-	}
+//LED 1:PB1 OC1A
+//LED 2:PB0 0C0A
+//LED 3:PB4 0C1B
+void configureHardwareForPWM(){
+	//Use full clock speed for OC0x
+	TCCR0B = (1<<CS00);
+	//Fast PWM on OC0A/B, top = OCRA
+	TCCR0A = (1 << WGM00) | (1 << WGM01);
+	TCCR0B |=  (1 << WGM02); //For using OCR0A as top
+	//for PWM mode, clear OC0A and OC0B on compare match
+	TCCR0A |=    (1<<COM0B1); // (1<<COM0A1)   |
 
+	//Set TOP to 63
+	OCR0A = 64;//TOP
+	OCR0B = 0;//Green (led 2) (0C0B) pulse width
 }
-
 
 void setBlue(uint8_t brightness){
 	if (brightness != 0)
@@ -60,25 +64,26 @@ void waitForButton(){
 
 int main(void)
 {
-	PORTB |= (1<<3);//Button pullup
 	const uint8_t led_mask = (1<<0) | (1<<1) | (1<<4);
 	DDRB = led_mask;
+	PORTB = 0;
+	/*
+	PORTB |= (1<<3);//Button pullup
+	
 	uint8_t led_counter = 0;
-	//uint8_t led_colors[] = {0, 0x2, 0x4, 0x5, 0x1};
-	const uint8_t bmask = (1<<0);
-	const uint8_t gmask = (1<<1);
-	const uint8_t rmask = (1<<4);
-	const uint8_t led_masks[] = {0, bmask, gmask, bmask | rmask, rmask};
+	uint8_t led_colors[] = {0, 0x2, 0x4, 0x5, 0x1};
 	for(;;){
-		uint8_t mask = led_masks[led_counter];
-		uint8_t pwm_val = 0;
-		while(PINB & (1<<3)){
-			pwm(mask, pwm_val);
-			pwm_val++;
-		}
+		setAll(led_colors[led_counter]) ;
 		led_counter++;
 		led_counter = led_counter % 5;
 		waitForButton();
 	}
+	*/
+	configureHardwareForPWM();
+	for(;;){
+		OCR0B+= 55;
+		_delay_ms(500);
+	}
+
     return 0;
 }
