@@ -1,0 +1,73 @@
+Cmp-Mod V01 Created by CvPcb (2013-mar-25)-stable date = Monday, September 30, 2013 01:18:15 PM
+
+BeginCmp
+TimeStamp = /524918BB;
+Reference = C1;
+ValeurCmp = CP;
+IdModule  = CP_8x13mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /5249121A;
+Reference = IC1;
+ValeurCmp = ATTINY25-P;
+IdModule  = DIP-8__300;
+EndCmp
+
+BeginCmp
+TimeStamp = /52491349;
+Reference = LED1;
+ValeurCmp = LED_CRBG;
+IdModule  = LED5_RGB;
+EndCmp
+
+BeginCmp
+TimeStamp = /52491863;
+Reference = P1;
+ValeurCmp = CONN_1;
+IdModule  = PINTST;
+EndCmp
+
+BeginCmp
+TimeStamp = /52491854;
+Reference = P2;
+ValeurCmp = CONN_1;
+IdModule  = PINTST;
+EndCmp
+
+BeginCmp
+TimeStamp = /5249138B;
+Reference = R1;
+ValeurCmp = R;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /524913A2;
+Reference = R2;
+ValeurCmp = R;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /524913B2;
+Reference = R3;
+ValeurCmp = R;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /524915A3;
+Reference = R4;
+ValeurCmp = R;
+IdModule  = R3;
+EndCmp
+
+BeginCmp
+TimeStamp = /5249178F;
+Reference = SW1;
+ValeurCmp = SW_PUSH;
+IdModule  = SW_PUSH_SMALL;
+EndCmp
+
+EndListe

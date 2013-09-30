@@ -1,0 +1,290 @@
+EESchema Schematic File Version 2  date Monday, September 30, 2013 01:57:44 PM
+LIBS:power
+LIBS:Symbols_DCDC-ACDC-Converter_RevC_20Jul2012
+LIBS:Symbols_EN60617_13Mar2013
+LIBS:Symbols_ICs-Diskrete_RevD6
+LIBS:Symbols_ICs-Opto_RevB_29Dez2012
+LIBS:Symbols_Socket-DIN41612_RevA
+LIBS:Symbols_Transformer-Diskrete_RevA
+LIBS:SymbolsSimilarEN60617+oldDIN617-RevE8
+LIBS:74xgxx
+LIBS:74xx
+LIBS:ac-dc
+LIBS:adc-dac
+LIBS:analog_switches
+LIBS:atmel
+LIBS:audio
+LIBS:brooktre
+LIBS:cmos_ieee
+LIBS:cmos4000
+LIBS:conn
+LIBS:contrib
+LIBS:cypress
+LIBS:dc-dc
+LIBS:device
+LIBS:digital-audio
+LIBS:display
+LIBS:dsp
+LIBS:elec-unifil
+LIBS:ftdi
+LIBS:gennum
+LIBS:graphic
+LIBS:hc11
+LIBS:intel
+LIBS:interface
+LIBS:linear
+LIBS:logo
+LIBS:memory
+LIBS:microchip_pic10mcu
+LIBS:microchip_pic12mcu
+LIBS:microchip_pic16mcu
+LIBS:microchip
+LIBS:microchip1
+LIBS:microcontrollers
+LIBS:motorola
+LIBS:msp430
+LIBS:nxp_armmcu
+LIBS:opto
+LIBS:philips
+LIBS:powerint
+LIBS:pspice
+LIBS:references
+LIBS:regul
+LIBS:relays
+LIBS:rfcom
+LIBS:sensors
+LIBS:siliconi
+LIBS:special
+LIBS:stm8
+LIBS:stm32
+LIBS:supertex
+LIBS:texas
+LIBS:transf
+LIBS:transistors
+LIBS:ttl_ieee
+LIBS:valves
+LIBS:video
+LIBS:xilinx
+LIBS:LED_RGB
+LIBS:noname-cache
+EELAYER 27 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date "30 sep 2013"
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L ATTINY25-P IC1
+U 1 1 5249121A
+P 3050 1950
+F 0 "IC1" H 1900 2350 40  0000 C CNN
+F 1 "ATTINY25-P" H 4050 1550 40  0000 C CNN
+F 2 "DIP8" H 4050 1950 35  0000 C CIN
+F 3 "~" H 3050 1950 60  0000 C CNN
+	1    3050 1950
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R1
+U 1 1 5249138B
+P 1450 2600
+F 0 "R1" V 1530 2600 40  0000 C CNN
+F 1 "R" V 1457 2601 40  0000 C CNN
+F 2 "~" V 1380 2600 30  0000 C CNN
+F 3 "~" H 1450 2600 30  0000 C CNN
+	1    1450 2600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R2
+U 1 1 524913A2
+P 1450 2750
+F 0 "R2" V 1530 2750 40  0000 C CNN
+F 1 "R" V 1457 2751 40  0000 C CNN
+F 2 "~" V 1380 2750 30  0000 C CNN
+F 3 "~" H 1450 2750 30  0000 C CNN
+	1    1450 2750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R3
+U 1 1 524913B2
+P 1450 2900
+F 0 "R3" V 1530 2900 40  0000 C CNN
+F 1 "R" V 1457 2901 40  0000 C CNN
+F 2 "~" V 1380 2900 30  0000 C CNN
+F 3 "~" H 1450 2900 30  0000 C CNN
+	1    1450 2900
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1700 2600 1850 2600
+Wire Wire Line
+	1700 2750 1850 2750
+Wire Wire Line
+	1700 2900 1850 2900
+Wire Wire Line
+	1200 2600 1200 2100
+Wire Wire Line
+	1200 2100 1700 2100
+Wire Wire Line
+	1700 1800 1150 1800
+Wire Wire Line
+	1150 1800 1150 2750
+Wire Wire Line
+	1150 2750 1200 2750
+Wire Wire Line
+	1700 1700 1100 1700
+Wire Wire Line
+	1100 1700 1100 2900
+Wire Wire Line
+	1100 2900 1200 2900
+$Comp
+L GND #PWR2
+U 1 1 5249144A
+P 2450 2750
+F 0 "#PWR2" H 2450 2750 30  0001 C CNN
+F 1 "GND" H 2450 2680 30  0001 C CNN
+F 2 "" H 2450 2750 60  0000 C CNN
+F 3 "" H 2450 2750 60  0000 C CNN
+	1    2450 2750
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2350 2750 2450 2750
+$Comp
+L R R4
+U 1 1 524915A3
+P 2950 2400
+F 0 "R4" V 3030 2400 40  0000 C CNN
+F 1 "R" V 2957 2401 40  0000 C CNN
+F 2 "~" V 2880 2400 30  0000 C CNN
+F 3 "~" H 2950 2400 30  0000 C CNN
+	1    2950 2400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1700 2200 1700 2400
+Wire Wire Line
+	1700 2400 2700 2400
+Wire Wire Line
+	3200 2400 4700 2400
+Wire Wire Line
+	4700 2400 4700 1700
+Wire Wire Line
+	4700 1700 4400 1700
+$Comp
+L GND #PWR4
+U 1 1 524916F6
+P 4500 2200
+F 0 "#PWR4" H 4500 2200 30  0001 C CNN
+F 1 "GND" H 4500 2130 30  0001 C CNN
+F 2 "" H 4500 2200 60  0000 C CNN
+F 3 "" H 4500 2200 60  0000 C CNN
+	1    4500 2200
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4400 2200 4500 2200
+$Comp
+L SW_PUSH SW1
+U 1 1 5249178F
+P 850 2300
+F 0 "SW1" H 1000 2410 50  0000 C CNN
+F 1 "SW_PUSH" H 850 2220 50  0000 C CNN
+F 2 "~" H 850 2300 60  0000 C CNN
+F 3 "~" H 850 2300 60  0000 C CNN
+	1    850  2300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1700 2000 850  2000
+$Comp
+L GND #PWR1
+U 1 1 524917BB
+P 850 2700
+F 0 "#PWR1" H 850 2700 30  0001 C CNN
+F 1 "GND" H 850 2630 30  0001 C CNN
+F 2 "" H 850 2700 60  0000 C CNN
+F 3 "" H 850 2700 60  0000 C CNN
+	1    850  2700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	850  2600 850  2700
+$Comp
+L CONN_1 P2
+U 1 1 52491854
+P 4550 1550
+F 0 "P2" H 4630 1550 40  0000 L CNN
+F 1 "CONN_1" H 4550 1605 30  0001 C CNN
+F 2 "~" H 4550 1550 60  0000 C CNN
+F 3 "~" H 4550 1550 60  0000 C CNN
+	1    4550 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_1 P1
+U 1 1 52491863
+P 4550 1300
+F 0 "P1" H 4630 1300 40  0000 L CNN
+F 1 "CONN_1" H 4550 1355 30  0001 C CNN
+F 2 "~" H 4550 1300 60  0000 C CNN
+F 3 "~" H 4550 1300 60  0000 C CNN
+	1    4550 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR3
+U 1 1 52491872
+P 4250 1300
+F 0 "#PWR3" H 4250 1300 30  0001 C CNN
+F 1 "GND" H 4250 1230 30  0001 C CNN
+F 2 "" H 4250 1300 60  0000 C CNN
+F 3 "" H 4250 1300 60  0000 C CNN
+	1    4250 1300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4400 1700 4400 1550
+Wire Wire Line
+	4400 1300 4250 1300
+$Comp
+L CP C1
+U 1 1 524918BB
+P 3750 1250
+F 0 "C1" H 3800 1350 40  0000 L CNN
+F 1 "CP" H 3800 1150 40  0000 L CNN
+F 2 "~" H 3850 1100 30  0000 C CNN
+F 3 "~" H 3750 1250 300 0000 C CNN
+	1    3750 1250
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4400 1550 3750 1550
+Wire Wire Line
+	3750 1550 3750 1450
+Wire Wire Line
+	3750 1050 4400 1050
+Wire Wire Line
+	4400 1050 4400 1300
+$Comp
+L LED_RCBG LED1
+U 1 1 5249C9A7
+P 2100 2750
+F 0 "LED1" H 1960 3010 60  0000 C CNN
+F 1 "LED_RCBG" H 2100 2500 60  0000 C CNN
+F 2 "" H 2100 2750 60  0000 C CNN
+F 3 "" H 2100 2750 60  0000 C CNN
+	1    2100 2750
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
