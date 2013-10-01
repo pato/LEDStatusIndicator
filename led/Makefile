@@ -1,12 +1,19 @@
 DEVICE  = attiny25
-F_CPU   = 1000000
-AVRDUDE = avrdude -v -c usbtiny -p $(DEVICE) #-B 10000  # edit this line for your programmer. For slow devices: #64
+F_CPU   = 16000 #1000000
+AVRDUDE = avrdude -v -c usbtiny -p $(DEVICE)  # edit this line for your programmer. For slow devices: #64
 
 CFLAGS  = -I. -DDEBUG_LEVEL=0
 OBJECTS = main.o
 
-COMPILE = avr-gcc -Wall -Os -DF_CPU=$F_CPU $(CFLAGS) -mmcu=$(DEVICE)
-COMPILEPP = avr-g++ -Wall -Os -DF_CPU=$(F_CPU) $(CFLAGS) -mmcu=$(DEVICE)
+COMPILE = avr-gcc -Wall -Ofast -DF_CPU=$F_CPU $(CFLAGS) -mmcu=$(DEVICE)
+COMPILEPP = avr-g++ -Wall -Ofast -DF_CPU=$(F_CPU) $(CFLAGS) -mmcu=$(DEVICE)
+
+#To build: (Make sure each step succeeds, they may fail when the micro is at low speeds)
+#$make hex #compile
+#$make fast #Speed up clock
+#$make flash #put program on device
+#$make slow #Bring device clock way down
+
 
 # symbolic targets:
 help:
@@ -23,7 +30,21 @@ program: flash fuse
 
 # rule for programming fuse bits:
 fuse:
-	$(AVRDUDE) -U hfuse:w:0xDF:m -U lfuse:w:0x62:m
+	#62 is full speed
+	#64 is 16khz
+	$(AVRDUDE) -B 1000 -U hfuse:w:0xDF:m -U lfuse:w:0x64:m
+
+# Minimize clock speed
+slow:
+	#62 is full speed
+	#64 is 16khz
+	$(AVRDUDE) -B 1000 -U hfuse:w:0xDF:m -U lfuse:w:0x64:m
+
+# Bring clock speed back up
+fast:
+	#62 is full speed
+	#64 is 16khz
+	$(AVRDUDE) -B 1000 -U hfuse:w:0xDF:m -U lfuse:w:0x62:m
 
 # rule for uploading firmware:
 flash: main.hex
