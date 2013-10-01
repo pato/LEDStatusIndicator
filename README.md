@@ -24,3 +24,9 @@ The fourth prototype uses an ATMega168, a push button, and an RGB LED. The butto
 ![fourth prototype](/pictures/prototype4.jpg)
 This is how it looks on the other side of the door.
 ![fourth prototype](/pictures/prototype4b.jpg)
+
+Fifth Prototype
+---------------
+The goal of the fifth protype was to reduce parts, size, and costs, as well as make it battery powered. We used an ATTiny45, a capacitor, four resistors, a push button, jumper cables, and RGB LED.
+![fifth prototype](/pictures/prototype5.jpg)
+In order to make it battery powered, we drastically reduced the frequence of the internal oscillator as well as made the LED pulse at interval instead of constnatly on.
