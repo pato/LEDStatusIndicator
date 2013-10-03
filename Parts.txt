@@ -1,12 +1,14 @@
-attiny25 ATTINY25-20PU-ND	1.05 to .66 (25)
-resistor (reset) CF14JT10K0CT-ND	.08-.053(10)
-cap (power) 399-6600-ND			.15-.11(10)
+attiny25 ATTINY25-20PU-ND	1.05 to .66 (25)        x1
+resistor (reset) CF14JT10K0CT-ND	.08-.053(10)    x1
+cap (power) 399-6600-ND			.15-.11(10)           x1
 
-button	450-1650-ND	.1-.09(10)
+button	450-1650-ND	.1-.09(10)                    x1
 
-3 resistors	S510QCT-ND	.08-.055(10)
-LED --
+3 resistors	S510QCT-ND	.08-.055(10)              x3
+RGB xAxx LED --                                   x1
 
-USB socket  ED2982-ND	.54-.51(10)
+battery holder BC22AAW-ND    .92-.855(10)         x1
+
+#USB socket  ED2982-ND	.54-.51(10)
 
 1.05+.08+.15+.1+.08+.54=2
