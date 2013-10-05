@@ -5,6 +5,7 @@ extern "C"{
 #include <inttypes.h>
 #include <avr/interrupt.h>
 #include <avr/power.h>
+#include <avr/sleep.h>
 }
 
 
@@ -56,6 +57,24 @@ SIGNAL(SIG_PIN_CHANGE){
     }
 }
 
+void enableWatchdogInterrupt(){
+    //WDCTR
+        //Set WDIE //Enable watchdog timer interrupt
+        //Set WDP3 //Prescaler 3. 4 second time-out.
+    WDCTR = (1<<WDIE) | (1<<WDP3);
+}
+
+ISR(WDT_vect){
+    PORTB ^= (1<<0);
+}
+
+void goToSleep(){
+    //MCUCR:
+        //Set SE //Enable sleep mode
+        //Set SM[1:0] to 0b10 //Choose deep sleep mode
+    //Call SLEEP instruction
+}
+
 int main(void)
 {
     current_color = 0;
@@ -72,6 +91,12 @@ int main(void)
     power_adc_disable();
     power_timer1_disable();
     power_usi_disable();
+    ////I SHOULD LOOK AT DIDR0
+    //ALSO:
+    //Make sure ADC is off
+    //Make sure ANALOG COMPARATOR is off
+    //Make sure BOD is off
+
 
 
     for(;;){
