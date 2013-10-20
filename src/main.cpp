@@ -14,7 +14,16 @@ extern "C"{
 //Modified sine wave
 uint8_t led_pulse_curve[] = { 0, 0, 0, 0, 1, 1, 2, 3, 3, 4, 6, 7, 8, 10, 11, 13, 14, 16, 18, 20, 22, 24, 26, 27, 29, 32, 34, 36, 37, 39, 41, 43, 45, 47, 49, 50, 52, 53, 55, 56, 57, 59, 60, 60, 61, 62, 62, 63, 63, 63, 64, 63, 63, 63, 62, 62, 61, 60, 60, 59, 57, 56, 55, 53, 52, 50, 49, 47, 45, 43, 41, 39, 37, 36, 34, 32, 29, 27, 26, 24, 22, 20, 18, 16, 14, 13, 11, 10, 8, 7, 6, 4, 3, 3, 2, 1, 1, 0, 0, 0, 0};
 
-uint8_t led_colors[] = {0, (1<<0), (1<<1), (1<<0) | (1<<4), (1<<4)};
+//On breadboard:
+//Green is PB0
+//Blue is PB1
+//Red is PB4
+//On PCB:
+//Blue is PB0
+//Green is PB1
+//Red is PB4
+//uint8_t led_colors[] = {0, (1<<0), (1<<1), (1<<0) | (1<<4), (1<<4)};//Breadboard
+uint8_t led_colors[] = {0, (1<<1), (1<<0), (1<<1) | (1<<4), (1<<4)};//PCB
 
 volatile uint8_t current_color;//Changed by interrupt
 volatile bool interrupt_has_occurred;
