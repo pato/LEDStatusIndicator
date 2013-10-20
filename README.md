@@ -30,3 +30,17 @@ Fifth Prototype
 The goal of the fifth protype was to reduce parts, size, and costs, as well as make it battery powered. We used an ATTiny45, a capacitor, four resistors, a push button, jumper cables, and RGB LED.
 ![fifth prototype](/pictures/prototype5.jpg)
 In order to make it battery powered, we drastically reduced the frequence of the internal oscillator as well as made the LED pulse at interval instead of constnatly on.
+
+First Beta
+----------
+The PCB boards from our friends at Oshpark! (PS: They're awesome!)
+![first beta](/pictures/beta1.jpg)
+
+From the backside
+![first beta](/pictures/beta2.jpg)
+
+From the front side
+![first beta](/pictures/beta3.jpg)
+
+Here's how it looks mounted on the door!
+![first beta](/pictures/beta4.jpg)
