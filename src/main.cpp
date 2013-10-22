@@ -23,7 +23,7 @@ uint8_t led_pulse_curve[] = { 0, 0, 0, 0, 1, 1, 2, 3, 3, 4, 6, 7, 8, 10, 11, 13,
 //Green is PB1
 //Red is PB4
 //uint8_t led_colors[] = {0, (1<<0), (1<<1), (1<<0) | (1<<4), (1<<4)};//Breadboard
-uint8_t led_colors[] = {0, (1<<1), (1<<0), (1<<1) | (1<<4), (1<<4)};//PCB
+uint8_t led_colors[] = {0, (1<<1), (1<<0), (1<<0) | (1<<4), (1<<4)};//PCB
 
 volatile uint8_t current_color;//Changed by interrupt
 volatile bool interrupt_has_occurred;
@@ -47,6 +47,7 @@ void softPWM(uint8_t duty, uint8_t mask){
 
 //Cycle through the brightnesses specified in led_pulse_curve
 void pwm_ramp(uint8_t mask){
+    if(mask == 0) return;
     for (uint8_t i = 0; i < sizeof(led_pulse_curve); ++i)
     {
         if(interrupt_has_occurred) return;
@@ -61,10 +62,12 @@ SIGNAL(SIG_PIN_CHANGE){
     bool button_state = PINB & (1<<3); //State of button
     if (button_state == false)//Button has been pushed
     {
-        current_color++;
-        if(current_color == 5) current_color = 0;
-        interrupt_has_occurred = true;
-        _delay_ms(50);
+        _delay_ms(30);
+        if(button_state == false){ //And it wasn't just bouncing
+            current_color++;
+            if(current_color == 5) current_color = 0;
+            interrupt_has_occurred = true;
+        }
     }
 }
 
