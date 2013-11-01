@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Monday, September 30, 2013 01:55:54 PM
+EESchema Schematic File Version 2  date Saturday, October 26, 2013 'PMt' 07:29:20 PM
 LIBS:power
 LIBS:Symbols_DCDC-ACDC-Converter_RevC_20Jul2012
 LIBS:Symbols_EN60617_13Mar2013
@@ -73,7 +73,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title ""
-Date "30 sep 2013"
+Date "26 oct 2013"
 Rev ""
 Comp ""
 Comment1 ""
@@ -128,13 +128,7 @@ $EndComp
 Wire Wire Line
 	1700 2600 1850 2600
 Wire Wire Line
-	1700 2750 1850 2750
-Wire Wire Line
-	1700 2900 1850 2900
-Wire Wire Line
-	1200 2600 1200 2100
-Wire Wire Line
-	1200 2100 1700 2100
+	1200 1900 1200 2600
 Wire Wire Line
 	1700 1800 1150 1800
 Wire Wire Line
@@ -197,29 +191,25 @@ Wire Wire Line
 $Comp
 L SW_PUSH SW1
 U 1 1 5249178F
-P 850 2300
-F 0 "SW1" H 1000 2410 50  0000 C CNN
-F 1 "SW_PUSH" H 850 2220 50  0000 C CNN
-F 2 "~" H 850 2300 60  0000 C CNN
-F 3 "~" H 850 2300 60  0000 C CNN
-	1    850  2300
+P 650 2300
+F 0 "SW1" H 800 2410 50  0000 C CNN
+F 1 "SW_PUSH" H 650 2220 50  0000 C CNN
+F 2 "~" H 650 2300 60  0000 C CNN
+F 3 "~" H 650 2300 60  0000 C CNN
+	1    650  2300
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	1700 2000 850  2000
 $Comp
 L GND #PWR03
 U 1 1 524917BB
-P 850 2700
-F 0 "#PWR03" H 850 2700 30  0001 C CNN
-F 1 "GND" H 850 2630 30  0001 C CNN
-F 2 "" H 850 2700 60  0000 C CNN
-F 3 "" H 850 2700 60  0000 C CNN
-	1    850  2700
+P 650 2750
+F 0 "#PWR03" H 650 2750 30  0001 C CNN
+F 1 "GND" H 650 2680 30  0001 C CNN
+F 2 "" H 650 2750 60  0000 C CNN
+F 3 "" H 650 2750 60  0000 C CNN
+	1    650  2750
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	850  2600 850  2700
 $Comp
 L CONN_1 P2
 U 1 1 52491854
@@ -257,17 +247,6 @@ Wire Wire Line
 	4400 1700 4400 1550
 Wire Wire Line
 	4400 1300 4250 1300
-$Comp
-L CP C1
-U 1 1 524918BB
-P 3750 1250
-F 0 "C1" H 3800 1350 40  0000 L CNN
-F 1 "CP" H 3800 1150 40  0000 L CNN
-F 2 "~" H 3850 1100 30  0000 C CNN
-F 3 "~" H 3750 1250 300 0000 C CNN
-	1    3750 1250
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	4400 1550 3750 1550
 Wire Wire Line
@@ -277,14 +256,48 @@ Wire Wire Line
 Wire Wire Line
 	4400 1050 4400 1300
 $Comp
-L LED_RCBG LED?
+L LED_RCBG LED1
 U 1 1 5249C9A7
 P 2100 2750
-F 0 "LED?" H 1960 3010 60  0000 C CNN
+F 0 "LED1" H 1960 3010 60  0000 C CNN
 F 1 "LED_RCBG" H 2100 2500 60  0000 C CNN
 F 2 "" H 2100 2750 60  0000 C CNN
 F 3 "" H 2100 2750 60  0000 C CNN
 	1    2100 2750
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	1200 1900 1700 1900
+$Comp
+L SW_PUSH SW2
+U 1 1 526C4BD8
+P 950 2400
+F 0 "SW2" H 1100 2510 50  0000 C CNN
+F 1 "SW_PUSH" H 950 2320 50  0000 C CNN
+F 2 "~" H 950 2400 60  0000 C CNN
+F 3 "~" H 950 2400 60  0000 C CNN
+	1    950  2400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	950  2700 650  2700
+Wire Wire Line
+	650  2600 650  2750
+Connection ~ 650  2700
+Wire Wire Line
+	1700 2000 650  2000
+Wire Wire Line
+	950  2100 1700 2100
+Wire Wire Line
+	1700 2900 1700 2800
+Wire Wire Line
+	1700 2800 1850 2800
+Wire Wire Line
+	1850 2800 1850 2750
+Wire Wire Line
+	1700 2750 1800 2750
+Wire Wire Line
+	1800 2750 1800 2900
+Wire Wire Line
+	1800 2900 1850 2900
 $EndSCHEMATC

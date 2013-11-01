@@ -1,25 +1,10 @@
-update=Saturday, October 26, 2013 'PMt' 07:16:23 PM
-last_client=pcbnew
-[pcbnew]
+update=Saturday, October 26, 2013 'PMt' 07:10:35 PM
+last_client=cvpcb
+[cvpcb]
 version=1
-LastNetListRead=ledstatusindicator2.net
-UseCmpFile=1
-PadDrill=0.6
-PadSizeH=1
-PadSizeV=1
-PcbTextSizeV=1
-PcbTextSizeH=1
-PcbTextThickness=0.3
-ModuleTextSizeV=1
-ModuleTextSizeH=1
-ModuleTextSizeThickness=0.15
-SolderMaskClearance=0
-SolderMaskMinWidth=0
-DrawSegmentWidth=0.2
-BoardOutlineThickness=0.15
-ModuleOutlineThickness=0.15
+NetIExt=net
+[pcbnew]
 [pcbnew/libraries]
-LibDir=
 LibName1=capacitors
 LibName2=connect
 LibName3=connectors_molex_serial_53047-A123
@@ -44,3 +29,4 @@ LibName21=smd_ssop_packages
 LibName22=smd_transistors
 LibName23=sockets
 LibName24=valves
+LibDir=
