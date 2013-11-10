@@ -23,7 +23,7 @@ uint8_t led_pulse_curve[] = { 0, 0, 0, 0, 1, 1, 2, 3, 3, 4, 6, 7, 8, 10, 11, 13,
 //Green is PB1
 //Red is PB4
 //uint8_t led_colors[] = {0, (1<<0), (1<<1), (1<<0) | (1<<4), (1<<4)};//Breadboard
-uint8_t led_colors[] = {0, (1<<1), (1<<0), (1<<0) | (1<<4), (1<<4)};//PCB
+uint8_t led_colors[] = {0, (1<<1), (1<<0), (1<<1) | (1<<4), (1<<4)};//PCB
 
 volatile uint8_t current_color;//Changed by interrupt
 volatile bool interrupt_has_occurred;
@@ -62,7 +62,7 @@ SIGNAL(SIG_PIN_CHANGE){
     bool button_state = PINB & (1<<3); //State of button
     if (button_state == false)//Button has been pushed
     {
-        _delay_ms(30);
+        _delay_ms(50);
         if(button_state == false){ //And it wasn't just bouncing
             current_color++;
             if(current_color == 5) current_color = 0;
@@ -78,9 +78,11 @@ ISR(WDT_vect){
 //Triggers the WDT_vect interrupt every 4 seconds. Used to wake from sleep mode.
 void enable_watchdog_interrupt(){
 	//Set WDIE //Enable watchdog timer interrupt
-	//Set WDP3 //Prescaler 3. 4 second time-out.
+	//For the prescaler:
+        //WDP3 = 4 second timeout
+        //WDP0,1,2 = 2 second timeout
 
-    WDTCR = (1<<WDIE) | (1<<WDP3);
+    WDTCR = (1<<WDIE) | (1<<WDP2) | (1<<WDP1) | (1<<WDP0);
 
 }
 
@@ -130,9 +132,10 @@ int main(void)
         pwm_ramp(led_colors[current_color]);
         PORTB &= ~((1<<0)|(1<<1)|(1<<4));//Turn off all LEDs, just in case
 
-        
         reset_watchdog(); //Watchdog interrupt will be triggered in 4 seconds *from now*
-        go_to_sleep();
+        if(!interrupt_has_occurred){
+            go_to_sleep();
+        }
     }
 
     return 0;
