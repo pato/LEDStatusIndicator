@@ -15,12 +15,14 @@ extern "C"{
 uint8_t led_pulse_curve[] = { 0, 0, 0, 0, 1, 1, 2, 3, 3, 4, 6, 7, 8, 10, 11, 13, 14, 16, 18, 20, 22, 24, 26, 27, 29, 32, 34, 36, 37, 39, 41, 43, 45, 47, 49, 50, 52, 53, 55, 56, 57, 59, 60, 60, 61, 62, 62, 63, 63, 63, 64, 63, 63, 63, 62, 62, 61, 60, 60, 59, 57, 56, 55, 53, 52, 50, 49, 47, 45, 43, 41, 39, 37, 36, 34, 32, 29, 27, 26, 24, 22, 20, 18, 16, 14, 13, 11, 10, 8, 7, 6, 4, 3, 3, 2, 1, 1, 0, 0, 0, 0};
 
 //On PCB:
-//Blue is PB6
-//Green is PB5
-//Red is PB7
-const uint8_t red = 1 << 7;
-const uint8_t green = 1 << 5;
-const uint8_t blue = 1 << 6;
+//Green is PB1
+//Blue is PB0
+//Red is PB2
+const uint8_t green = 1 << 1;
+const uint8_t blue = 1 << 0;
+const uint8_t red = 1 << 2;
+const uint8_t sw1 = 1 << 3;
+const uint8_t sw2 = 1 << 4;
 //All the possible LED colors. 0-3 are accessed with one button, and 4 is accessed with the other button.
 const uint8_t led_colors[] = {0, green, green | red, blue, red};//PCB
 
@@ -58,27 +60,28 @@ SIGNAL(SIG_PIN_CHANGE){
     // //Normal clock mode. Clock /= 8
     // CLKPR = (1<<CLKPCE);
     // CLKPR = (1<<CLKPS0)||(1<<CLKPS1);
-    bool switch1 = PINB & (1<<2); //State of button
-    bool switch2 = PINB & (1<<3);
-    if (switch1 == false)//Button 1 has been pushed
+    bool button1 = PINB & sw1; //State of button
+    bool button2 = PINB & sw2;
+    if (button1 == false)//Button 1 has been pushed. Goes to red mode
     {
-        _delay_ms(20);
-        switch1 = PINB & (1<<2);
-        if(switch1 == false){ //And it wasn't just bouncing
+        _delay_ms(50);
+        button1 = PINB & sw1;
+        if(button1 == false){ //And it wasn't just bouncing
+            current_color = 4; //Turn on the red
+            interrupt_has_occurred = true;
+        }
+    }
+    else if (button2 == false)//Button 2 has been pushed. Cycle through non-red modes.
+    {
+        _delay_ms(50);
+        button2 = PINB & sw2;
+        if(button2 == false){ //And it wasn't just bouncing
             current_color++;
             if(current_color >= 4) current_color = 0;
             interrupt_has_occurred = true;
         }
     }
-    else if (switch2 == false)//Button 2 has been pushed
-    {
-        _delay_ms(20);
-        switch2 = PINB & (1<<3);
-        if(switch2 == false){ //And it wasn't just bouncing
-            current_color = 4; //Turn on the red
-            interrupt_has_occurred = true;
-        }
-    }
+    
 }
 
 ISR(WDT_vect){
@@ -115,9 +118,9 @@ int main(void)
 {
     current_color = 0;
 
-    DDRB = (1<<0) | (1<<1) | (1<<4); //Set LEDs to output
+    DDRB = red | green | blue; //Set LEDs to output
 
-    PORTB = (1<<3);//Pullup resistor for button
+    PORTB = sw1 | sw2;//Pullup resistor for buttons
 
     _delay_ms(1);//Wait for pullup to work
 
@@ -140,7 +143,7 @@ int main(void)
     for(;;){
         interrupt_has_occurred = false;
         pwm_ramp(led_colors[current_color]);
-        PORTB &= ~((1<<0)|(1<<1)|(1<<4));//Turn off all LEDs, just in case
+        PORTB &= ~(red|green|blue);//Turn off all LEDs, just in case
 
         reset_watchdog(); //Watchdog interrupt will be triggered in 2 seconds *from now*
         //If an interrupt occurred since we set this to false, it means someone has pushed

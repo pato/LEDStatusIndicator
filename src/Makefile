@@ -19,9 +19,9 @@ COMPILEPP = avr-g++ -Wall -Ofast -DF_CPU=$(F_CPU) $(CFLAGS) -mmcu=$(DEVICE)
 help:
 	@echo "This Makefile has no default rule. Use one of the following:"
 	@echo "make hex ....... to build main.hex"
-	@echo "make program ... to flash fuses and firmware"
-	@echo "make fuse ...... to flash the fuses"
+	@echo "make fast ...... to prepare uc for firmware upload"
 	@echo "make flash ..... to flash the firmware"
+	@echo "make slow ...... to put the uc back in power save mode"
 	@echo "make clean ..... to delete objects and hex file"
 
 hex: main.hex
