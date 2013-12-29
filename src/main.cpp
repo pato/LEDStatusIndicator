@@ -14,23 +14,22 @@ extern "C"{
 //Modified sine wave
 uint8_t led_pulse_curve[] = { 0, 0, 0, 0, 1, 1, 2, 3, 3, 4, 6, 7, 8, 10, 11, 13, 14, 16, 18, 20, 22, 24, 26, 27, 29, 32, 34, 36, 37, 39, 41, 43, 45, 47, 49, 50, 52, 53, 55, 56, 57, 59, 60, 60, 61, 62, 62, 63, 63, 63, 64, 63, 63, 63, 62, 62, 61, 60, 60, 59, 57, 56, 55, 53, 52, 50, 49, 47, 45, 43, 41, 39, 37, 36, 34, 32, 29, 27, 26, 24, 22, 20, 18, 16, 14, 13, 11, 10, 8, 7, 6, 4, 3, 3, 2, 1, 1, 0, 0, 0, 0};
 
-//On breadboard:
-//Green is PB0
-//Blue is PB1
-//Red is PB4
 //On PCB:
-//Blue is PB0
-//Green is PB1
-//Red is PB4
-//uint8_t led_colors[] = {0, (1<<0), (1<<1), (1<<0) | (1<<4), (1<<4)};//Breadboard
-uint8_t led_colors[] = {0, (1<<1), (1<<0), (1<<1) | (1<<4), (1<<4)};//PCB
+//Blue is PB6
+//Green is PB5
+//Red is PB7
+const uint8_t red = 1 << 7;
+const uint8_t green = 1 << 5;
+const uint8_t blue = 1 << 6;
+//All the possible LED colors. 0-3 are accessed with one button, and 4 is accessed with the other button.
+const uint8_t led_colors[] = {0, green, green | red, blue, red};//PCB
 
-volatile uint8_t current_color;//Changed by interrupt
-volatile bool interrupt_has_occurred;
+volatile uint8_t current_color; //Changed by interrupt
+volatile bool interrupt_has_occurred; //Set to true inside any interrupts
 
 //Does a software PWM. The LEDs you want to blink should be set to 1 in mask
 //And the duty cycle is out of 64
-void softPWM(uint8_t duty, uint8_t mask){
+void softPWM(const uint8_t duty, const uint8_t mask){
     PORTB |= mask;
     for (int i = 0; i < duty; ++i)
     {
@@ -46,7 +45,7 @@ void softPWM(uint8_t duty, uint8_t mask){
 }
 
 //Cycle through the brightnesses specified in led_pulse_curve
-void pwm_ramp(uint8_t mask){
+void pwm_ramp(const uint8_t mask){
     if(mask == 0) return;
     for (uint8_t i = 0; i < sizeof(led_pulse_curve); ++i)
     {
@@ -59,13 +58,24 @@ SIGNAL(SIG_PIN_CHANGE){
     // //Normal clock mode. Clock /= 8
     // CLKPR = (1<<CLKPCE);
     // CLKPR = (1<<CLKPS0)||(1<<CLKPS1);
-    bool button_state = PINB & (1<<3); //State of button
-    if (button_state == false)//Button has been pushed
+    bool switch1 = PINB & (1<<2); //State of button
+    bool switch2 = PINB & (1<<3);
+    if (switch1 == false)//Button 1 has been pushed
     {
-        _delay_ms(50);
-        if(button_state == false){ //And it wasn't just bouncing
+        _delay_ms(20);
+        switch1 = PINB & (1<<2);
+        if(switch1 == false){ //And it wasn't just bouncing
             current_color++;
-            if(current_color == 5) current_color = 0;
+            if(current_color >= 4) current_color = 0;
+            interrupt_has_occurred = true;
+        }
+    }
+    else if (switch2 == false)//Button 2 has been pushed
+    {
+        _delay_ms(20);
+        switch2 = PINB & (1<<3);
+        if(switch2 == false){ //And it wasn't just bouncing
+            current_color = 4; //Turn on the red
             interrupt_has_occurred = true;
         }
     }
@@ -75,7 +85,7 @@ ISR(WDT_vect){
 	interrupt_has_occurred = true;
 }
 
-//Triggers the WDT_vect interrupt every 4 seconds. Used to wake from sleep mode.
+//Triggers the WDT_vect interrupt every 2 seconds. Used to wake from sleep mode.
 void enable_watchdog_interrupt(){
 	//Set WDIE //Enable watchdog timer interrupt
 	//For the prescaler:
@@ -112,7 +122,7 @@ int main(void)
     _delay_ms(1);//Wait for pullup to work
 
     GIMSK |= (1<<PCIE);//Enable pin interrupts
-    PCMSK |= (1<<PCINT3);//Allow an interrupt from the button
+    PCMSK |= (1<<PCINT3) | (1<<PCINT4);//Allow an interrupt from the buttons (pins 3 and 4)
     sei();//Enable interrupts
     
     //Super low power time
@@ -124,7 +134,7 @@ int main(void)
     CLKPR = (1<<CLKPCE);
     CLKPR = (1<<CLKPS0)||(1<<CLKPS1);
 
-    //Every 4 seconds, the watchdog timer will overflow and trigger an interupt
+    //Every 2 seconds, the watchdog timer will overflow and trigger an interupt
     enable_watchdog_interrupt();
 
     for(;;){
@@ -132,7 +142,9 @@ int main(void)
         pwm_ramp(led_colors[current_color]);
         PORTB &= ~((1<<0)|(1<<1)|(1<<4));//Turn off all LEDs, just in case
 
-        reset_watchdog(); //Watchdog interrupt will be triggered in 4 seconds *from now*
+        reset_watchdog(); //Watchdog interrupt will be triggered in 2 seconds *from now*
+        //If an interrupt occurred since we set this to false, it means someone has pushed
+        // a button and we should go to the next color.
         if(!interrupt_has_occurred){
             go_to_sleep();
         }
