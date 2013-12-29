@@ -1,5 +1,5 @@
-update=Saturday, October 26, 2013 'PMt' 07:10:35 PM
-last_client=cvpcb
+update=Sunday, December 29, 2013 'PMt' 02:48:04 PM
+last_client=eeschema
 [cvpcb]
 version=1
 NetIExt=net
@@ -30,3 +30,13 @@ LibName22=smd_transistors
 LibName23=sockets
 LibName24=valves
 LibDir=
+[eeschema]
+version=1
+LibDir=
+NetFmtName=
+RptD_X=0
+RptD_Y=100
+RptLab=1
+LabSize=60
+[eeschema/libraries]
+LibName1=power
