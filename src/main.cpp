@@ -56,6 +56,22 @@ void pwm_ramp(const uint8_t mask){
     } 
 }
 
+//Triggers the WDT_vect interrupt every 2 seconds. Used to wake from sleep mode.
+void enable_watchdog_interrupt(){
+	//Set WDIE //Enable watchdog timer interrupt
+	//For the prescaler:
+    //WDP3 = 4 second timeout
+    //WDP0,1,2 = 2 second timeout
+    
+    WDTCR = (1<<WDIE) | (1<<WDP2) | (1<<WDP1) | (1<<WDP0);
+    
+}
+
+//Sets watchdog timer back to 0
+void reset_watchdog(){
+	asm volatile("wdr");
+}
+
 SIGNAL(SIG_PIN_CHANGE){
     // //Normal clock mode. Clock /= 8
     // CLKPR = (1<<CLKPCE);
@@ -64,18 +80,20 @@ SIGNAL(SIG_PIN_CHANGE){
     bool button2 = PINB & sw2;
     if (button1 == false)//Button 1 has been pushed. Goes to red mode
     {
-        _delay_ms(50);
+        _delay_ms(20);
         button1 = PINB & sw1;
         if(button1 == false){ //And it wasn't just bouncing
+            reset_watchdog();
             current_color = 4; //Turn on the red
             interrupt_has_occurred = true;
         }
     }
     else if (button2 == false)//Button 2 has been pushed. Cycle through non-red modes.
     {
-        _delay_ms(50);
+        _delay_ms(20);
         button2 = PINB & sw2;
         if(button2 == false){ //And it wasn't just bouncing
+            reset_watchdog();
             current_color++;
             if(current_color >= 4) current_color = 0;
             interrupt_has_occurred = true;
@@ -88,21 +106,6 @@ ISR(WDT_vect){
 	interrupt_has_occurred = true;
 }
 
-//Triggers the WDT_vect interrupt every 2 seconds. Used to wake from sleep mode.
-void enable_watchdog_interrupt(){
-	//Set WDIE //Enable watchdog timer interrupt
-	//For the prescaler:
-        //WDP3 = 4 second timeout
-        //WDP0,1,2 = 2 second timeout
-
-    WDTCR = (1<<WDIE) | (1<<WDP2) | (1<<WDP1) | (1<<WDP0);
-
-}
-
-//Sets watchdog timer back to 0
-void reset_watchdog(){
-	asm volatile("wdr");
-}
 
 //Sleeps the microcontroller. Wakes up on interrupt (button or watchdog overflow)
 void go_to_sleep(){
