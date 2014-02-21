@@ -1,4 +1,4 @@
-DEVICE  = attiny25
+DEVICE  = attiny45
 F_CPU   = 16000 #1000000
 AVRDUDE = avrdude -v -c usbtiny -p $(DEVICE)  # edit this line for your programmer. For slow devices: #64
 
