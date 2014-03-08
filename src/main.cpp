@@ -14,17 +14,13 @@ extern "C"{
 //Modified sine wave
 uint8_t led_pulse_curve[] = { 0, 0, 0, 0, 1, 1, 2, 3, 3, 4, 6, 7, 8, 10, 11, 13, 14, 16, 18, 20, 22, 24, 26, 27, 29, 32, 34, 36, 37, 39, 41, 43, 45, 47, 49, 50, 52, 53, 55, 56, 57, 59, 60, 60, 61, 62, 62, 63, 63, 63, 64, 63, 63, 63, 62, 62, 61, 60, 60, 59, 57, 56, 55, 53, 52, 50, 49, 47, 45, 43, 41, 39, 37, 36, 34, 32, 29, 27, 26, 24, 22, 20, 18, 16, 14, 13, 11, 10, 8, 7, 6, 4, 3, 3, 2, 1, 1, 0, 0, 0, 0};
 
-//On PCB:
-//Green is PB1
-//Blue is PB0
-//Red is PB2
-const uint8_t green = 1 << 1;
-const uint8_t blue = 1 << 0;
+const uint8_t green = 1 << 0;
+const uint8_t blue = 1 << 1;
 const uint8_t red = 1 << 2;
 const uint8_t sw1 = 1 << 3;
 const uint8_t sw2 = 1 << 4;
 //All the possible LED colors. 0-3 are accessed with one button, and 4 is accessed with the other button.
-const uint8_t led_colors[] = {0, green, green | red, blue, red};//PCB
+const uint8_t led_colors[] = {0, green, blue, red};//PCB
 
 volatile uint8_t current_color; //Changed by interrupt
 volatile bool interrupt_has_occurred; //Set to true inside any interrupts
@@ -84,7 +80,7 @@ SIGNAL(SIG_PIN_CHANGE){
         button1 = PINB & sw1;
         if(button1 == false){ //And it wasn't just bouncing
             reset_watchdog();
-            current_color = 4; //Turn on the red
+            current_color = 3; //Turn on the red
             interrupt_has_occurred = true;
         }
     }
@@ -95,7 +91,7 @@ SIGNAL(SIG_PIN_CHANGE){
         if(button2 == false){ //And it wasn't just bouncing
             reset_watchdog();
             current_color++;
-            if(current_color >= 4) current_color = 0;
+            if(current_color >= 3) current_color = 0;
             interrupt_has_occurred = true;
         }
     }

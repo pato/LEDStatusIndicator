@@ -1,14 +1,12 @@
-attiny25 ATTINY25-20PU-ND	1.05 to .66 (25)        x1
-resistor (reset) CF14JT10K0CT-ND	.08-.053(10)    x1
+attiny25                ATTINY25-20PU-ND        1.05 to .66 (25)        x1
+resistor (reset)        S11KQCT-ND              .08-.055(10)            x1
 
-button	450-1650-ND	.1-.09(10)                    x1
-button  450-1804-ND     .1-.92(10)			x1
+button                  450-1650-ND             .1-.09(10)              x1
+button                  450-1804-ND             .1-.92(10)              x1
 
-3 resistors	S510QCT-ND	.08-.055(10)              x3
-RGB xAxx LED --                                   x1
+3 resistors             S510QCT-ND              .08-.055(10)            x3
+RGB xCxx LED            754-1615-ND             1.89-1.06               x1
 
-battery holder BC22AAW-ND    .92-.855(10)         x1
+battery holder          BC22AAW-ND              .92-.855(10)            x1
 
-#USB socket  ED2982-ND	.54-.51(10)
-
-1.05+.08+.15+.1+.08+.54=2
+1.05+.08+.15+.1+.08+1.89+.54=3.89
